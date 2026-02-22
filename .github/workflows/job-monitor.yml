@@ -31,6 +31,10 @@ jobs:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ secrets.GEMINI_MODEL }} # optional
+          GEMINI_CONFIDENCE_THRESHOLD: "0.8"         # optional
+          GEMINI_MAX_CANDIDATES_PER_SITE: "60"       # optional
         run: |
           python monitor_jobs.py
 
