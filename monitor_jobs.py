@@ -85,6 +85,83 @@ SITES: List[SiteConfig] = [
         base_url="https://www.netsoltech.com",
         parser_key="netsol",
     ),
+    SiteConfig(
+        site_key="moitt",
+        name="Ministry of Information Technology",
+        source_url="https://moitt.gov.pk/Jobs",
+        base_url="https://moitt.gov.pk",
+        parser_key="moitt",
+    ),
+    SiteConfig(
+        site_key="ptcl_bright",
+        name="PTCL BrightSpyre",
+        source_url="https://ptcl.brightspyre.com/ptclindex.php",
+        base_url="https://ptcl.brightspyre.com",
+        parser_key="ptcl_bright",
+    ),
+    SiteConfig(
+        site_key="pta",
+        name="Pakistan Telecommunication Authority",
+        source_url="https://pta.gov.pk/category/vacancy-announcement-1604160826-2023-06-01",
+        base_url="https://pta.gov.pk",
+        parser_key="pta",
+    ),
+    SiteConfig(
+        site_key="nadra",
+        name="NADRA",
+        source_url="https://careers.nadra.gov.pk/JobListing",
+        base_url="https://careers.nadra.gov.pk",
+        parser_key="nadra",
+    ),
+    SiteConfig(
+        site_key="pseb",
+        name="Punjab Small Industries Board",
+        source_url="https://governmentjob.pk/companies/pseb/",
+        base_url="https://governmentjob.pk",
+        parser_key="pseb",
+    ),
+    SiteConfig(
+        site_key="10pearls",
+        name="10Pearls",
+        source_url="https://10pearls.com/karachi-job-openings/",
+        base_url="https://10pearls.com",
+        parser_key="10pearls",
+    ),
+    SiteConfig(
+        site_key="folio3",
+        name="Folio3",
+        source_url="https://folio3.com/careers/",
+        base_url="https://folio3.com",
+        parser_key="folio3",
+    ),
+    SiteConfig(
+        site_key="arpatech",
+        name="Arpatech",
+        source_url="https://www.arpatech.com/careers/",
+        base_url="https://www.arpatech.com",
+        parser_key="arpatech",
+    ),
+    SiteConfig(
+        site_key="contour",
+        name="Contour Software",
+        source_url="https://contour-software.com/jobs/",
+        base_url="https://contour-software.com",
+        parser_key="contour",
+    ),
+    SiteConfig(
+        site_key="venturedive",
+        name="Venture Dive",
+        source_url="https://venturedive.applytojob.com/apply/#alljobs",
+        base_url="https://venturedive.applytojob.com",
+        parser_key="venturedive",
+    ),
+    SiteConfig(
+        site_key="ibex",
+        name="IBEX",
+        source_url="https://careers.ibex.co/jobs",
+        base_url="https://careers.ibex.co",
+        parser_key="ibex",
+    ),
 ]
 
 
@@ -212,11 +289,121 @@ def parse_netsol(html: str, base_url: str) -> List[Job]:
         exclude_any=["facebook", "twitter", "linkedin", "youtube", "privacy", "contact"],
     )
 
+def parse_moitt(html: str, base_url: str) -> List[Job]:
+    return parse_generic_links(
+        site_key="moitt",
+        html=html,
+        base_url=base_url,
+        must_contain_any=["job", "career", "vacan", "position", "apply", "recruit"],
+        exclude_any=["facebook", "twitter", "linkedin", "youtube", "privacy", "terms", "contact"],
+    )
+
+def parse_ptcl_bright(html: str, base_url: str) -> List[Job]:
+    return parse_generic_links(
+        site_key="ptcl_bright",
+        html=html,
+        base_url=base_url,
+        must_contain_any=["job", "career", "vacan", "position", "apply", "opening"],
+        exclude_any=["facebook", "twitter", "linkedin", "youtube", "privacy", "contact", "home"],
+    )
+
+def parse_pta(html: str, base_url: str) -> List[Job]:
+    return parse_generic_links(
+        site_key="pta",
+        html=html,
+        base_url=base_url,
+        must_contain_any=["job", "career", "vacan", "position", "apply", "recruit", "announcement"],
+        exclude_any=["facebook", "twitter", "linkedin", "youtube", "privacy", "terms", "contact"],
+    )
+
+def parse_nadra(html: str, base_url: str) -> List[Job]:
+    return parse_generic_links(
+        site_key="nadra",
+        html=html,
+        base_url=base_url,
+        must_contain_any=["job", "career", "vacan", "position", "apply", "opening"],
+        exclude_any=["facebook", "twitter", "linkedin", "youtube", "privacy", "terms", "contact"],
+    )
+
+def parse_pseb(html: str, base_url: str) -> List[Job]:
+    return parse_generic_links(
+        site_key="pseb",
+        html=html,
+        base_url=base_url,
+        must_contain_any=["job", "career", "vacan", "position", "apply", "opening"],
+        exclude_any=["facebook", "twitter", "linkedin", "youtube", "privacy", "terms", "contact"],
+    )
+
+def parse_10pearls(html: str, base_url: str) -> List[Job]:
+    return parse_generic_links(
+        site_key="10pearls",
+        html=html,
+        base_url=base_url,
+        must_contain_any=["job", "career", "vacan", "position", "opening", "apply", "engineer", "developer", "manager", "lead"],
+        exclude_any=["facebook", "twitter", "linkedin", "youtube", "instagram", "whatsapp", "privacy", "terms", "sitemap", "contact", "about", "life-at-10pearls", "10pearls-university", "labs", "news", "blog", "events", "press"],
+    )
+
+def parse_folio3(html: str, base_url: str) -> List[Job]:
+    return parse_generic_links(
+        site_key="folio3",
+        html=html,
+        base_url=base_url,
+        must_contain_any=["job", "career", "vacan", "position", "opening", "apply", "engineer", "developer"],
+        exclude_any=["facebook", "twitter", "linkedin", "youtube", "privacy", "terms", "contact", "about", "news", "blog"],
+    )
+
+def parse_arpatech(html: str, base_url: str) -> List[Job]:
+    return parse_generic_links(
+        site_key="arpatech",
+        html=html,
+        base_url=base_url,
+        must_contain_any=["job", "career", "vacan", "position", "opening", "apply", "engineer", "developer", "manager"],
+        exclude_any=["facebook", "twitter", "linkedin", "youtube", "privacy", "terms", "contact", "about", "life-at-arpatech", "news", "blog"],
+    )
+
+def parse_contour(html: str, base_url: str) -> List[Job]:
+    return parse_generic_links(
+        site_key="contour",
+        html=html,
+        base_url=base_url,
+        must_contain_any=["job", "career", "vacan", "position", "opening", "apply"],
+        exclude_any=["facebook", "twitter", "linkedin", "youtube", "privacy", "terms", "contact", "about"],
+    )
+
+def parse_venturedive(html: str, base_url: str) -> List[Job]:
+    return parse_generic_links(
+        site_key="venturedive",
+        html=html,
+        base_url=base_url,
+        must_contain_any=["job", "career", "vacan", "position", "opening", "apply"],
+        exclude_any=["facebook", "twitter", "linkedin", "youtube", "privacy", "terms", "contact", "about"],
+    )
+
+def parse_ibex(html: str, base_url: str) -> List[Job]:
+    return parse_generic_links(
+        site_key="ibex",
+        html=html,
+        base_url=base_url,
+        must_contain_any=["job", "career", "vacan", "position", "opening", "apply"],
+        exclude_any=["facebook", "twitter", "linkedin", "youtube", "privacy", "terms", "contact", "about"],
+    )
+
 PARSERS: Dict[str, Callable[[str, str], List[Job]]] = {
     "paa": parse_paa,
     "ptcl": parse_ptcl,
     "systems": parse_systems,
     "netsol": parse_netsol,
+    "moitt": parse_moitt,
+    "ptcl_bright": parse_ptcl_bright,
+    "pta": parse_pta,
+    "nadra": parse_nadra,
+    "pseb": parse_pseb,
+    "10pearls": parse_10pearls,
+    "folio3": parse_folio3,
+    "arpatech": parse_arpatech,
+    "contour": parse_contour,
+    "venturedive": parse_venturedive,
+    "ibex": parse_ibex,
 }
 
 
